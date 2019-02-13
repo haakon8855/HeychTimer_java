@@ -1,0 +1,11 @@
+.root{
+    -fx-font-family: "Roboto";
+}
+
+.label{
+    -fx-font-family: "Share Tech Mono";
+}
+
+#scramble{
+    -fx-font-family: "Roboto";
+}

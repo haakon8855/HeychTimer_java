@@ -63,9 +63,9 @@ public class Time {
 			long restMillis = millis - TimeUnit.SECONDS.toMillis(allSecs);
 			long centis = restMillis / 10;
 			if (millis < 60000) {
-				outString = String.format("%2d.%02d", secs, centis);
+				outString = String.format("%d.%02d", secs, centis);
 			} else {
-				outString = String.format("%2d:%02d.%02d", mins, secs, centis);
+				outString = String.format("%d:%02d.%02d", mins, secs, centis);
 			}
 		}
 		return outString;

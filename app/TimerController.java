@@ -60,7 +60,7 @@ public class TimerController {
 			)
 		);
 		timeline.setCycleCount(Animation.INDEFINITE);
-		timeLabel.setText("0:00"); // sets label at startup
+		timeLabel.setText("0.00"); // sets label at startup
 	}
 	
 	public void handleSpace() {
@@ -130,6 +130,24 @@ public class TimerController {
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

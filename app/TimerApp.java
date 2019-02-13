@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class TimerApp extends Application{
@@ -24,9 +25,16 @@ public class TimerApp extends Application{
 		TimerController timerController = loader.getController();
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
+		
 		// Sets the window icon
-		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("ico.png")));
-		primaryStage.show();	
+		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("resources/textures/ico.png")));
+		
+		// Imports fonts and runs stylesheet
+		Font.loadFont(getClass().getResource("resources/fonts/ShareTechMono-Regular.ttf").toExternalForm(), 12);
+		Font.loadFont(getClass().getResource("resources/fonts/Roboto-Regular.ttf").toExternalForm(), 12);
+		scene.getStylesheets().add(getClass().getResource("styleSheet.css").toExternalForm());
+		
+		primaryStage.show();
 		
 		// Runs whenever the spacebar is pushed down
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
@@ -75,3 +83,32 @@ public class TimerApp extends Application{
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

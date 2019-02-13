@@ -45,7 +45,7 @@ public class Scramble {
 			// Picks random move from that face (e.g. R, R' or 2R)
 			int moveY = ThreadLocalRandom.current().nextInt(0, scrambles[0].length);
 			// Adds that move to the scramble sequence
-			theScramble += scrambles[moveX][moveY] + " ";
+			theScramble += scrambles[moveX][moveY] + "  ";
 			// Shifts the last1 and last2 vars
 			last2 = last1;
 			last1 = moveX;
