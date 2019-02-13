@@ -68,6 +68,12 @@ public class TimerApp extends Application{
 			timerController.reScramble();
 		});
 		
+		timerController.listView.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+			if (event.getCode() == KeyCode.DELETE) {
+				timerController.deleteTime();
+			}
+		});
+		
 		// Quits program when escape is pressed
 		// Purely for ease of use during development
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {

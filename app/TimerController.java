@@ -101,6 +101,14 @@ public class TimerController {
 		}
 	}
 	
+	public void deleteTime() {
+		int selected = listView.getSelectionModel().getSelectedIndex();
+		timeList.remove(selected);
+		timeList.remove(timeList.size()-1);
+		updateListView();
+		newTime(false);
+	}
+	
 	public void reScramble() {
 		getThisTime().reScramble();
 		updateScramble();

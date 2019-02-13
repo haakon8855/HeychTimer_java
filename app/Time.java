@@ -80,8 +80,28 @@ public class Time {
 		// Stops the timer
 		clock.stop();
 	}
-
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
