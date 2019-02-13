@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="339.0" prefWidth="494.0" style="-fx-background-color: #bbbbbb;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.TimerController">
+<AnchorPane prefHeight="339.0" prefWidth="494.0" style="-fx-background-color: #bbbbbb;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="app.TimerController">
    <children>
       <ListView fx:id="listView" layoutX="103.0" layoutY="107.0" prefHeight="159.0" prefWidth="286.0" />
       <Pane layoutX="179.0" layoutY="53.0" prefHeight="40.0" prefWidth="135.0">

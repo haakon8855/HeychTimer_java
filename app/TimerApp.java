@@ -1,8 +1,7 @@
 package app;
 
-import java.util.Timer;
-
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,12 +20,15 @@ public class TimerApp extends Application{
 		primaryStage.setTitle("Timer"); // Sets window title
 		FXMLLoader loader = new FXMLLoader(TimerApp.class.getResource("TimerGUI.fxml"));
 		Parent root = loader.load();
+		// Fetches the controller object
 		TimerController timerController = loader.getController();
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
+		// Sets the window icon
 		primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("ico.png")));
 		primaryStage.show();	
 		
+		// Runs whenever the spacebar is pushed down
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
 			if (event.getCode() == KeyCode.SPACE
 				&& timerController.getState() != 1) {
@@ -35,6 +37,7 @@ public class TimerApp extends Application{
 			}
 		});
 		
+		// Runs whenever the spacebar is released
 		scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
 			if (event.getCode() == KeyCode.SPACE
 				&& timerController.getState() == 1
@@ -48,11 +51,21 @@ public class TimerApp extends Application{
 		});
 		
 		scene.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+			// Sets focus to the window when any empty area is clicked
 			root.requestFocus();
 		});
 		
 		timerController.scramble.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+			// Creates a new scramble sequence when the scramble labes is clicked
 			timerController.reScramble();
+		});
+		
+		// Quits program when escape is pressed
+		// Purely for ease of use during development
+		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+			if (event.getCode() == KeyCode.ESCAPE) {
+				Platform.exit();
+			}
 		});
 		
 	}

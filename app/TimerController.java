@@ -9,7 +9,6 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -71,10 +70,10 @@ public class TimerController {
 			setState(1);
 		} else if (state == 1) {
 			getThisTime().stopInspection();
-			getThisTime().startTime();	// starts the current Time obj. (e.g. starts the clock)
+			getThisTime().startTime();	// starts the current Time obj. (i.e. starts the clock)
 			setState(2);
 		} else if (state == 2) {
-			getThisTime().stopTime();	// stops the current Time obj. (e.g. stops the clock)
+			getThisTime().stopTime();	// stops the current Time obj. (i.e. stops the clock)
 			timeline.pause();			// temp. stops the on screen timer from updating
 			updateListView();
 			setState(0);
@@ -112,9 +111,11 @@ public class TimerController {
 	}
 	
 	public void updateListView() {
+		// Updates the list of former times after the timer is stopped
 		List<String> tempList = new ArrayList<String>();
 		timeLabel.setText(getThisTime().getTimeString());
 		
+		// Pushes all times as strings into a list
 		for (int i = 0; i < timeList.size(); i++) {
 			tempList.add(i+1 + ".\t" + timeList.get(i).getTimeString());
 		}
@@ -124,6 +125,7 @@ public class TimerController {
 	}
 	
 	public void updateScramble() {
+		// Updated the scramble label
 		scramble.setText(getThisTime().getScramble());
 	}
 	
