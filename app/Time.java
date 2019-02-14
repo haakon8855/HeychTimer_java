@@ -90,6 +90,12 @@ public class Time {
 			}
 			long allSecs = TimeUnit.MILLISECONDS.toSeconds(millis);
 			outString = ""+(inspectionTime-allSecs);
+			if (millis > inspectionTime*1000 
+				&& millis < inspectionTime*1000 + 2000) {
+				outString = "+2";
+			} else if (millis > inspectionTime*1000 + 2000){
+				outString = "DNF";
+			}
 		} else {
 			// Returns a time formatted as either 
 			// 		s.cc	ss.cc	m:ss.cc		mm:ss.cc 
@@ -111,8 +117,8 @@ public class Time {
 	public void startTime() {
 		// Starts the timer after inspection
 		clock.start();
-//		delay = null;
-//		inspection = null;
+		delay = null;
+		inspection = null;
 	}
 	
 	public void stopTime() {

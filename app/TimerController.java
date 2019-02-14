@@ -51,12 +51,12 @@ public class TimerController {
 			new KeyFrame(
 				Duration.millis(10),
 				event -> {
-					String timeString = getThisTime().getTimeString();
-					if (timeString.equals("-1")) {
-						getThisTime().stopInspection();
-						getThisTime().startTime();
-						setState(2);
-					}
+//					String timeString = getThisTime().getTimeString();
+//					if (timeString.equals("-1")) {
+//						getThisTime().stopInspection();
+//						getThisTime().startTime();
+//						setState(2);
+//					}
 					timeLabel.setText(getThisTime().getTimeString());
 
 					switch (getThisTime().holdColor) {
