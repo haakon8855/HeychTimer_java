@@ -102,6 +102,10 @@ public class TimerController {
 	}
 	
 	public void deleteTime() {
+		// checks if there is only one time object in the list (e.g. the next time)
+		if (timeList.size() == 1) {
+			throw new IllegalCallerException("Cant delete element from empty list");
+		}
 		int selected = listView.getSelectionModel().getSelectedIndex();
 		timeList.remove(selected);
 		timeList.remove(timeList.size()-1);
@@ -119,6 +123,11 @@ public class TimerController {
 	}
 	
 	public void updateListView() {
+		if (timeList.size() == 0) {
+			ObservableList<String> items = FXCollections.observableArrayList();
+			listView.setItems(items);
+			return;
+		}
 		// Updates the list of former times after the timer is stopped
 		List<String> tempList = new ArrayList<String>();
 		timeLabel.setText(getThisTime().getTimeString());

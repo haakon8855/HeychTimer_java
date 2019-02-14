@@ -42,6 +42,10 @@ public class TimerApp extends Application{
 				&& timerController.getState() != 1) {
 				timerController.handleSpace();
 				released = false;
+			} else if (event.getCode() == KeyCode.ESCAPE) {
+				// Quits program when escape is pressed
+				// Purely for ease of use during development
+				Platform.exit();
 			}
 		});
 		
@@ -73,15 +77,6 @@ public class TimerApp extends Application{
 				timerController.deleteTime();
 			}
 		});
-		
-		// Quits program when escape is pressed
-		// Purely for ease of use during development
-		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-			if (event.getCode() == KeyCode.ESCAPE) {
-				Platform.exit();
-			}
-		});
-		
 	}
 	
 	public static void main(final String[] args) {
