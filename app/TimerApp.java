@@ -38,10 +38,15 @@ public class TimerApp extends Application{
 		
 		// Runs whenever the spacebar is pushed down
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-			if (event.getCode() == KeyCode.SPACE
-				&& timerController.getState() != 1) {
-				timerController.handleSpace();
-				released = false;
+			if (event.getCode() == KeyCode.SPACE) {
+				if (timerController.getState() != 1) {
+					timerController.handleSpace();
+					released = false;
+					
+				} else if (timerController.getState() == 1 && released) {
+					timerController.startDelay();
+				}
+			
 			} else if (event.getCode() == KeyCode.ESCAPE) {
 				// Quits program when escape is pressed
 				// Purely for ease of use during development
@@ -51,14 +56,17 @@ public class TimerApp extends Application{
 		
 		// Runs whenever the spacebar is released
 		scene.addEventFilter(KeyEvent.KEY_RELEASED, event -> {
-			if (event.getCode() == KeyCode.SPACE
-				&& timerController.getState() == 1
-				&& released) {
-				timerController.handleSpace();
-			} else if (event.getCode() == KeyCode.SPACE
-					   && timerController.getState() == 1
-					   && !released) {
-				released = true;
+			if (event.getCode() == KeyCode.SPACE) {
+				if (timerController.getState() == 1) {
+					if (released && timerController.getGoodToGo()) {
+						timerController.handleSpace();
+						timerController.stopDelay();
+					} else if (released && !timerController.getGoodToGo()) {
+						timerController.stopDelay();
+					} else if (!released) {
+						released = true;
+					}
+				}
 			}
 		});
 		

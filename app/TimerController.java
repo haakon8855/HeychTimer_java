@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 public class TimerController {
@@ -37,6 +38,7 @@ public class TimerController {
 	*/
 	private int state = 0;
 	private int states = 3;
+	private boolean goodToGo = false;
 	
 	@FXML
 	public void initialize() {
@@ -56,6 +58,19 @@ public class TimerController {
 						setState(2);
 					}
 					timeLabel.setText(getThisTime().getTimeString());
+
+					switch (getThisTime().holdColor) {
+					case 1:
+						timeLabel.setTextFill(Color.web("#a50000"));
+						break;
+					case 2:
+						timeLabel.setTextFill(Color.web("#00600c"));
+						setGoodToGo(true);
+						break;
+					default:
+						timeLabel.setTextFill(Color.web("#333"));
+						setGoodToGo(false);
+					}
 				}
 			)
 		);
@@ -92,6 +107,14 @@ public class TimerController {
 	
 	public int getState() {
 		return state;
+	}
+	
+	public boolean getGoodToGo() {
+		return goodToGo;
+	}
+
+	public void setGoodToGo(boolean val) {
+		goodToGo = val;
 	}
 	
 	public void newTime(boolean update) { // creates a new time
@@ -144,6 +167,14 @@ public class TimerController {
 	public void updateScramble() {
 		// Updated the scramble label
 		scramble.setText(getThisTime().getScramble());
+	}
+	
+	public void startDelay() {
+		getThisTime().pressed = true;
+	}
+	
+	public void stopDelay() {
+		getThisTime().pressed = false;
 	}
 	
 }
