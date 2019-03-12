@@ -10,6 +10,10 @@ public class Clock {
 		this.time = 0;
 	}
 	
+	public Clock(long time) {
+		this.time = time;
+	}
+	
 	public void start() {
 		if (!running) {
 			// if timer is not running, starts the clock

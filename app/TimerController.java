@@ -9,6 +9,7 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
@@ -22,13 +23,18 @@ public class TimerController {
 	@FXML
 	Label scramble;
 	@FXML
-	ListView<String> listView = new ListView<String>();
+	Button save;
+	@FXML
+	ListView<String> listView = new ListView<>();
 	
 	// List containing the times
-	private List<Time> timeList = new ArrayList<Time>();
+	private List<Time> timeList = new ArrayList<>();
 	
 	// Timeline which updates the clock live
 	private Timeline timeline;
+	
+	private TextHandler fileHandler = new TextHandler();
+	private String savePath = "times.csv";
 
 	/* 
 	 * States:
@@ -51,12 +57,6 @@ public class TimerController {
 			new KeyFrame(
 				Duration.millis(10),
 				event -> {
-//					String timeString = getThisTime().getTimeString();
-//					if (timeString.equals("-1")) {
-//						getThisTime().stopInspection();
-//						getThisTime().startTime();
-//						setState(2);
-//					}
 					timeLabel.setText(getThisTime().getTimeString());
 
 					switch (getThisTime().holdColor) {
@@ -76,6 +76,13 @@ public class TimerController {
 		);
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeLabel.setText("0.00"); // sets label at startup
+		setTimeList(load());
+		updateListView();
+		newTime(true);
+	}
+	
+	public void setTimeList(List<Time> timeList) {
+		this.timeList = timeList;
 	}
 	
 	public void handleSpace() {
@@ -175,6 +182,14 @@ public class TimerController {
 	
 	public void stopDelay() {
 		getThisTime().pressed = false;
+	}
+	
+	public void save() {
+		fileHandler.write(savePath, timeList);
+	}
+	
+	public List<Time> load() {
+		return fileHandler.read(savePath);
 	}
 	
 }

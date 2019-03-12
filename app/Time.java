@@ -23,6 +23,12 @@ public class Time {
 		this.scramble.newScramble();
 	}
 	
+	public Time(long time, Scramble scramble) {
+		this.time = time;
+		this.clock = new Clock(time);
+		this.scramble = scramble;
+	}
+	
 	public void startInspection() {
 		// Starts the inspection time counting down from this.length
 		inspection.start();
@@ -61,6 +67,11 @@ public class Time {
 	public long getTime(Clock clock) {
 		// time variable is simultaneously updated
 		time = clock.getTime();
+		return this.time;
+	}
+	
+	public long getTime() {
+		time = this.clock.getTime();
 		return this.time;
 	}
 	

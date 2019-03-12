@@ -17,6 +17,12 @@ public class Scramble {
 	// length of scramble in moves
 	private int length = 25;
 	
+	public Scramble() {}
+	
+	public Scramble(String scramble) {
+		theScramble = scramble;
+	}
+	
 	public void newScramble() {
 		theScramble = "";
 		// picks two random faces as the last two faces that were moved 
