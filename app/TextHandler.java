@@ -48,7 +48,9 @@ public class TextHandler implements FileHandler {
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("The system cannot find the specified file: " + path);
+			System.out.println("The system cannot find the specified file, "
+					+ "creating the default /" + path);
+			write(path, new ArrayList<>());
 		}
 		
 		return timeList;
