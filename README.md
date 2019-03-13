@@ -12,4 +12,4 @@ HeychTimer is a Rubik's Cube timer for speedsolving made in in Java with JavaFX.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
